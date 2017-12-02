@@ -16,11 +16,21 @@ class Avatar extends Component {
 
   }
 
+  facebookSubmit() {
+    let tgt = document.getElementById('facebookAvatar');
+    let email = tgt.value;
+    console.log(email);
+  }
+
   render() {
     return (
       <div>
         <input id="inputAvatar" type="file" name="myImage" accept="image/x-png,image/gif,image/jpeg" />
         <button onClick={() => this.avatarSubmit()}>Use avatar</button>
+        <br/>
+        <label for="facebookImage">Enter your facebook email</label>
+        <input id="facebookAvatar" type="email" name="facebookImage" />
+        <button onClick={() => this.facebookSubmit()}>Use FacebookAvatar</button>
       </div>
     )
   }
