@@ -1,22 +1,25 @@
 import React, { Component } from 'react';
 import './canvas.css';
+import PropTypes from "prop-types";
 
-import def, {fabric, } from 'fabric-browseronly';
-
-console.log(def);
-console.log(fabric);
+import { fabric } from 'fabric-browseronly';
 
 class AvatarCanvas extends Component {
   constructor(props) {
     super(props);
-    this.state = {backgroundImage: {}, hatImage: {}};
+    this.backgroundImage = {};
+    this.hatImage = {};
+  }
+
+  componentWillReceiveProps(props) {
+    console.log("updating hat to", props);
+    this.setBackgroundImage(props.backgroundImage);
+    this.setHatImage(props.hatImage);
   }
 
   componentDidMount() {
 
     let fabricCanvas = new fabric.Canvas();
-    console.log(fabricCanvas);
-
 
     this.fabric = fabricCanvas;
     fabricCanvas.initialize(this.c, {
@@ -24,18 +27,8 @@ class AvatarCanvas extends Component {
       width: 256,
     });
 
-    new fabric.Image.fromURL("/macdja38.jpg", (i) => {
-      i.set({ left: 0, top: 0, width: 256, height: 256, selectable: false});
-      this.fabric.add(i);
-    });
-
-    new fabric.Image.fromURL("/hat.png", (i) => {
-      i.set({left: 0, top: 0, width: 150, height: 150});
-      this.fabric.add(i);
-    });
-
-    this.makeHTMLImage("/macdja38.jpg").then(img => this.setBackgroundImage(img));
-    this.makeHTMLImage("/hat.png").then(img => this.setHatImage(img))
+    this.setBackgroundImage(this.props.backgroundImage || "/macdja38.jpg");
+    this.setHatImage(this.props.hatImage || "/hat.png");
   }
 
   makeHTMLImage(src) {
@@ -46,23 +39,51 @@ class AvatarCanvas extends Component {
     })
   }
 
+  loadAnyImage(something) {
+    return new Promise((resolve, reject) => {
+      if (typeof something === "string") {
+        new fabric.Image.fromURL(something, resolve);
+      } else {
+        resolve(new fabric.Image(something));
+      }
+    })
+  }
+
   setBackgroundImage(img) {
-    this.setState({backgroundImage: Object.assign({}, this.state.backgroundImage, {img})});
+    this.loadAnyImage(img).then(i => {
+      i.set({ left: 0, top: 0, width: 256, height: 256, selectable: false });
+      if (this.backgroundImage.i) {
+        this.fabric.remove(this.backgroundImage.i);
+      }
+      this.backgroundImage.i = i;
+      this.fabric.add(i);
+    });
   }
 
   setHatImage(img) {
-    this.setState({hatImage: Object.assign({}, this.state.hatImage, {img})});
-
+    this.loadAnyImage(img).then(i => {
+      i.set({ left: 0, top: 0, width: 150, height: 150 });
+      if (this.hatImage.i) {
+        this.fabric.remove(this.hatImage.i);
+      }
+      this.hatImage.i = i;
+      this.fabric.add(i);
+    });
   }
 
 
   render() {
     return (
       <div>
-        <canvas height="256px" width="256px" ref={c => this.c = c}/>
+        <canvas height="256px" width="256px" ref={c => this.c = c} />
       </div>
     );
   }
 }
+
+AvatarCanvas.propTypes = {
+  backgroundImage: PropTypes.string,
+  hatImage: PropTypes.string,
+};
 
 export default AvatarCanvas;

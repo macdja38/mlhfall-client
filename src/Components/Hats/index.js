@@ -13,15 +13,23 @@ class Hats extends Component {
 
   }
 
+  createHatSelect(img) {
+    return () => {
+      this.promisifyHat(img).then((img) => {
+        this.props.onHatChange(img);
+      })
+    }
+  }
+
 
   createHats(img) {
     return (
-      <button id={"button"}><img src={img} alt="" onClick={() => this.sendHat(img)}/></button>
+      <button id={"button"} onClick={this.createHatSelect(img)}><img src={img} alt="" /></button>
     );
   }
 
 
-  sendHat(src) {
+  promisifyHat(src) {
     return new Promise((resolve, reject) => {
       const img = new Image();
       img.onload = () => resolve(img);
