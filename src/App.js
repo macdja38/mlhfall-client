@@ -35,22 +35,23 @@ class App extends Component {
 
     return (
       <div className="wrapper">
-      
-        <div className ="one">
-            <div className ="image-header"><p> Image</p>
-       
-            </div>
-            <div className = "display-image">
-          <Canvas backgroundImage={this.state.backgroundImage} hatImage={this.state.hatImage} />
+
+        <div className="one">
+          <div className="image-header"><p> Image</p>
+
+          </div>
+          <div className="display-image">
+            <Canvas backgroundImage={this.state.backgroundImage} hatImage={this.state.hatImage} />
+          </div>
+          <div className="display-hats">
+            <p>Hats</p>
+            <Hats onHatChange={this.onHatChange} />
+            <br />
+            <p>Avatar</p>
+            <Avatar onNewBackground={this.onNewBackground} />
+          </div>
         </div>
-        <div className= "display-hats ">
-        <p>Hats</p>
-        <Hats onHatChange={this.onHatChange} />
-        <br />
-        <p>Avatar</p>
-        <Avatar onNewBackground={this.onNewBackground} />
-      </div>
-    );
+      </div>);
   }
 }
 
