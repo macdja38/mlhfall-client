@@ -82,8 +82,8 @@ class AvatarCanvas extends Component {
 }
 
 AvatarCanvas.propTypes = {
-  backgroundImage: PropTypes.oneOf(PropTypes.string, PropTypes.object),
-  hatImage: PropTypes.oneOf(PropTypes.string, PropTypes.object),
+  backgroundImage: PropTypes.oneOf([PropTypes.string, PropTypes.object]),
+  hatImage: PropTypes.oneOf([PropTypes.string, PropTypes.object]),
 };
 
 export default AvatarCanvas;
