@@ -5,25 +5,25 @@ export function isGif(gif) {
 }
 
 export function parseGif(gif) {
-    let uint8Array = _base64ToArrayBuffer(gif);
+    let uint8Array = convertDataURIToBinary(gif);
     console.log(uint8Array);
-    return gifFrames({url: uint8Array, outputType: 'canvas'}).then(e => {
-      console.log(e);
+    return gifFrames({url: uint8Array, frames: 'all', outputType: 'canvas'}).then(e => {
+      console.log(e.toString());
       return e;
     })
 }
 
-function _base64ToArrayBuffer(base64) {
-  console.log(base64);
-  let idex = base64.indexOf("base64,");
-  let base64Data = base64.slice(idex + 7);
-  console.log(base64Data);
+var BASE64_MARKER = ';base64,';
 
-  var binary_string =  window.atob(base64Data);
-  var len = binary_string.length;
-  var bytes = new Uint8Array( len );
-  for (var i = 0; i < len; i++)        {
-    bytes[i] = binary_string.charCodeAt(i);
+function convertDataURIToBinary(dataURI) {
+  var base64Index = dataURI.indexOf(BASE64_MARKER) + BASE64_MARKER.length;
+  var base64 = dataURI.substring(base64Index);
+  var raw = window.atob(base64);
+  var rawLength = raw.length;
+  var array = new Uint8Array(new ArrayBuffer(rawLength));
+
+  for(let i = 0; i < rawLength; i++) {
+    array[i] = raw.charCodeAt(i);
   }
-  return bytes.buffer;
+  return array;
 }

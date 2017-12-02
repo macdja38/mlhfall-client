@@ -62,11 +62,13 @@ class AvatarCanvas extends Component {
   setBackgroundImage(img) {
     this.loadAnyImage(img).then(i => {
       i.set({ left: 0, top: 0, width: 256, height: 256, selectable: false });
-      if (this.backgroundImage.i) {
+      /*if (this.backgroundImage.i) {
         this.fabric.remove(this.backgroundImage.i);
       }
       this.backgroundImage.i = i;
-      this.fabric.add(i);
+      this.fabric.add(i);*/
+      this.fabric.backgroundImage = i;
+      this.fabric.renderAll();
     });
   }
 
@@ -92,8 +94,8 @@ class AvatarCanvas extends Component {
 }
 
 AvatarCanvas.propTypes = {
-  backgroundImage: PropTypes.oneOf([PropTypes.string, PropTypes.object]),
-  hatImage: PropTypes.oneOf([PropTypes.string, PropTypes.object]),
+  backgroundImage: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  hatImage: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
 };
 
 export default AvatarCanvas;
