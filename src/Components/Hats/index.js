@@ -30,17 +30,14 @@ class Hats extends Component {
   }
 
   addHat() {
-    console.log("hi")
     let tgt = document.getElementById('inputImage');
     let files = tgt.files;
     // FileReader support
     if (FileReader && files && files.length) {
-      console.log("hello")
       let fr = new FileReader();
       fr.onload = () => {
         let newList = this.state.list.slice(0);
         newList.push(fr.result);
-        console.log("h")
         let newState = Object.assign({}, this.state, {list: newList});
         this.setState(newState);
       };

@@ -1,37 +1,11 @@
 import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Hats from './Components/Hats'
 import Canvas from './Components/Canvas';
 
 
 class App extends Component {
-
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      list: ["./santa_hat.png", "top_hat.png"],
-    };
-
-    this.createHats = this.createHats.bind(this);
-
-  }
-
-  createHats(img) {
-    return (
-      <button id={"button"}><img src={img} alt="" onClick={this.sendHat(img)}/></button>
-    );
-  }
-
-
-  sendHat(src) {
-    return new Promise((resolve, reject) => {
-      const img = new Image();
-      img.onload = () => resolve(img);
-      img.src = src;
-    });
-  }
-
 
   render() {
 
@@ -46,8 +20,7 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
 
-        {this.state.list.map(this.createHats)}
-
+        <Hats></Hats>
       </div>
     );
   }
