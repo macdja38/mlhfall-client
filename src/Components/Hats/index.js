@@ -7,6 +7,7 @@ class Hats extends Component {
 
     this.state = {
       list: ["./santa_hat.png", "top_hat.png"],
+
     };
 
     this.createHats = this.createHats.bind(this);
@@ -46,22 +47,20 @@ class Hats extends Component {
       fr.onload = () => {
         let newList = this.state.list.slice(0);
         newList.push(fr.result);
-        let newState = Object.assign({}, this.state, {list: newList});
+        let newState = Object.assign({}, this.state, { list: newList });
         this.setState(newState);
       };
       fr.readAsDataURL(files[0]);
     }
 
-
-
-
   }
+
   render() {
     return (
       <div>
-      {this.state.list.map(this.createHats)}
-      <input id="inputImage" type="file" name="myImage" accept="image/x-png,image/gif,image/jpeg"/>
-      <button onClick={() => this.addHat()}> submit</button>
+        {this.state.list.map(this.createHats)}
+        <input id="inputImage" type="file" name="myImage" accept="image/x-png,image/gif,image/jpeg" />
+        <button onClick={() => this.addHat()}> submit</button>
       </div>
     )
   }
