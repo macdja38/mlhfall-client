@@ -4,7 +4,6 @@
   "private": true,
   "dependencies": {
     "fabric-browseronly": "^1.7.19",
-    "fabric-webpack": "^1.6.0-rc.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-scripts": "1.0.17"
