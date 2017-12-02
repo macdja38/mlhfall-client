@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import "./hats.css"
+
 
 class Hats extends Component {
 
@@ -25,7 +27,7 @@ class Hats extends Component {
 
   createHats(img) {
     return (
-      <button id={"button"} onClick={this.createHatSelect(img)}><img src={img} alt="" /></button>
+      <button className={"display-hats button"} onClick={this.createHatSelect(img)}><img src={img} alt="" /></button>
     );
   }
 
@@ -58,14 +60,19 @@ class Hats extends Component {
   render() {
     return (
       <div>
-        {this.state.list.map(this.createHats)}
-        <input id="inputImage" type="file" name="myImage" accept="image/x-png,image/gif,image/jpeg" />
-        <button onClick={() => this.addHat()}> submit</button>
-      </div>
-    )
+        <div className="five">
+          <div className="hats-header">Avaliable Hats</div>
+          <div className="display-hats">
+
+            {this.state.list.map(this.createHats)}
+          </div>
+        </div>
+        <div className="three">
+          <input id="inputImage" type="file" name="myImage" accept="image/x-png,image/gif,image/jpeg" />
+          <button className="btn-upload buttons-style" onClick={() => this.addHat()}> submit</button>
+        </div>
+      </div>);
   }
-
-
 }
 
 export default Hats
