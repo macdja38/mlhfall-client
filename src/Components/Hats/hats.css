@@ -46,6 +46,7 @@
 }
 
 .three {
+
   float: right;
   grid-column: 3;
   grid-row: 4 / 5;
@@ -80,8 +81,12 @@
 
 
 
-
-
+.push-down input{
+    margin-bottom: 25px;
+}
+.push-down button{
+    margin-bottom: 25px;
+}
 
 
 

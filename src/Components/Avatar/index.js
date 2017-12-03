@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import './avatar.css'
 class Avatar extends Component {
   avatarSubmit() {
     console.log("add hat");
@@ -18,10 +18,16 @@ class Avatar extends Component {
 
   render() {
     return (
-      <div>
+      <div className ="style-buttons">
+          
+       
+        
         <input id="inputAvatar" type="file" name="myImage" accept="image/x-png,image/gif,image/jpeg" />
         <button onClick={() => this.avatarSubmit()}>Use avatar</button>
-      </div>
+        </div> 
+    
+             
+      
     )
   }
 

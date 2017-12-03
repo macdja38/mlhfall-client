@@ -44,8 +44,9 @@ class App extends Component {
             <Canvas backgroundImage={this.state.backgroundImage} hatImage={this.state.hatImage} />
           </div>
         </div>
-        <div className="display-hats">
-          <Hats onHatChange={this.onHatChange} />
+        <div className="five">
+          <Hats onHatChange={this.onHatChange} /></div>
+        <div className ="three">
           <Avatar onNewBackground={this.onNewBackground} />
         </div>
       </div>);
