@@ -25,9 +25,7 @@ class Avatar extends Component {
   render() {
     return (
       <div className ="style-buttons">
-          
-       
-         <button onClick={() => this.avatarSubmit()}>Use avatar</button>
+
         <input id="inputAvatar" type="file" name="myImage" accept="image/x-png,image/gif,image/jpeg" />
         <button onClick={() => this.avatarSubmit()}>Use avatar</button>
         
