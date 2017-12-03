@@ -87,7 +87,8 @@ class AvatarCanvas extends Component {
   render() {
     return (
       <div className="image-header">
-        <canvas height="256px" width="256px" ref={c => this.c = c} />
+        
+        <canvas className ="relocate-image" height="256px" width="256px" ref={c => this.c = c} />
       </div>
     );
   }
