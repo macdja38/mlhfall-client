@@ -27,13 +27,14 @@ class Avatar extends Component {
       <div className ="style-buttons">
           
        
-        
+         <button onClick={() => this.avatarSubmit()}>Use avatar</button>
         <input id="inputAvatar" type="file" name="myImage" accept="image/x-png,image/gif,image/jpeg" />
         <button onClick={() => this.avatarSubmit()}>Use avatar</button>
-        <br/>
+        
+        {/*<br/>
         <label for="facebookImage">Enter your facebook email</label>
         <input id="facebookAvatar" type="email" name="facebookImage" />
-        <button onClick={() => this.facebookSubmit()}>Use FacebookAvatar</button>
+        <button onClick={() => this.facebookSubmit()}>Use FacebookAvatar</button>*/}
       </div>
     )
   }
