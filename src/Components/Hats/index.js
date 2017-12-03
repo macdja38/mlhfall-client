@@ -63,16 +63,16 @@ class Hats extends Component {
         <div>
           <div className="hats-header">Avaliable Hats</div>
           <div className="display-hats">
-            
+
             {this.state.list.map(this.createHats)}
-        <br></br>
-        <br></br>
-        
+            <br></br>
+            <br></br>
+
           </div>
-        
+
         </div>
-        
-        <div className = "push-down">
+
+        <div className="push-down">
           <input id="inputImage" type="file" name="myImage" accept="image/x-png,image/gif,image/jpeg" />
           <button className="" onClick={() => this.addHat()}> submit</button>
         </div>
