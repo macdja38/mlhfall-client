@@ -1,8 +1,18 @@
 import React, { Component } from 'react';
 import './canvas.css';
 import PropTypes from "prop-types";
+// import fileDownload from 'js-file-download';
 
 import { fabric } from 'fabric-browseronly';
+
+function downloadURI(uri, name) {
+  let link = document.createElement("a");
+  link.download = name;
+  link.href = uri;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
 
 class AvatarCanvas extends Component {
   constructor(props) {
@@ -11,11 +21,15 @@ class AvatarCanvas extends Component {
     this.hatImage = {};
   }
 
+  save() {
+    downloadURI(this.fabric.toDataURL(), "avatar.gif");
+  }
+
   _base64ToArrayBuffer(base64) {
-    let binary_string =  window.atob(base64);
+    let binary_string = window.atob(base64);
     let len = binary_string.length;
-    let bytes = new Uint8Array( len );
-    for (let i = 0; i < len; i++)        {
+    let bytes = new Uint8Array(len);
+    for (let i = 0; i < len; i++) {
       bytes[i] = binary_string.charCodeAt(i);
     }
     return bytes.buffer;
@@ -88,6 +102,7 @@ class AvatarCanvas extends Component {
     return (
       <div className="image-header">
         <canvas height="256px" width="256px" ref={c => this.c = c} />
+        <button onClick={() => this.save()}>Save</button>
       </div>
     );
   }
