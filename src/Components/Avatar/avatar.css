@@ -1,9 +1,18 @@
 .style-buttons input{
-    
-    
+    margin-top: 15px;
+    width: 175px;
     float: left;
 }
 .style-buttons button{
-   
+    margin-top: 15px;
     float: right;
+}
+
+.ion-social-facebook:hover {
+    color: #3b5998;
+}
+
+.ion-social-facebook a:link,
+.ion-social-facebook a:visited {
+    font-size: 160%;
 }

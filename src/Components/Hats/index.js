@@ -67,7 +67,7 @@ class Hats extends Component {
             {this.state.list.map(this.createHats)}
         <br></br>
         <br></br>
-        <br></br>
+        
           </div>
         
         </div>

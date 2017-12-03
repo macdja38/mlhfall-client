@@ -101,8 +101,10 @@ class AvatarCanvas extends Component {
   render() {
     return (
       <div className="image-header">
-        <canvas height="256px" width="256px" ref={c => this.c = c} />
-        <button onClick={() => this.save()}>Save</button>
+        <canvas className ="relocate-image" height="256px" width="256px" ref={c => this.c = c} />
+        <br></br>
+
+        <button className ="save-button" onClick={() => this.save()}>Save</button>
       </div>
     );
   }
