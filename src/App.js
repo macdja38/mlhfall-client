@@ -24,7 +24,7 @@ class App extends Component {
 
     if (id && hash) {
       const cleanId = id.replace(/[^0-9]/g, "");
-      const cleanHash = hash.replace(/[^0-9a-f]/g, "");
+      const cleanHash = hash.replace(/[^0-9_a-f]/g, "");
       const cleanType = (type || 'png').replace(/[^a-z]/g, "");
       const avatarUrl = `./proxy/${cleanId}/${cleanHash}.${cleanType}`;
       this.state = {
