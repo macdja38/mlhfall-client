@@ -36,7 +36,7 @@ class App extends Component {
     return (
       <div className="wrapper">
 
-        <div className="one">
+        <div className="avatarEditor">
           <div className="image-header"><p> Image</p>
 
           </div>
@@ -44,10 +44,11 @@ class App extends Component {
             <Canvas backgroundImage={this.state.backgroundImage} hatImage={this.state.hatImage} />
           </div>
         </div>
-        <div className="five">
-          <Hats onHatChange={this.onHatChange} /></div>
-        <div className ="three">
+        <div className="avatarSelect">
           <Avatar onNewBackground={this.onNewBackground} />
+        </div>
+        <div className="hatSelect">
+          <Hats onHatChange={this.onHatChange} />
         </div>
       </div>);
   }

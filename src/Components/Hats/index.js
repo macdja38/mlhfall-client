@@ -9,7 +9,6 @@ class Hats extends Component {
 
     this.state = {
       list: ["./santa_hat.png", "top_hat.png"],
-
     };
 
     this.createHats = this.createHats.bind(this);
@@ -27,7 +26,9 @@ class Hats extends Component {
 
   createHats(img) {
     return (
-      <button className={"display-hats button"} onClick={this.createHatSelect(img)}><img src={img} alt="" /></button>
+      <button key={img} className="display-hats button" onClick={this.createHatSelect(img)}>
+        <img src={img} alt="" />
+      </button>
     );
   }
 
@@ -65,8 +66,8 @@ class Hats extends Component {
           <div className="display-hats">
 
             {this.state.list.map(this.createHats)}
-            <br></br>
-            <br></br>
+            <br />
+            <br />
 
           </div>
 
