@@ -10,10 +10,29 @@ import { isGif, parseGif } from './gifToCanvasList'
 class App extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       backgroundImage: "./macdja38.jpg",
       hatImage: "./santa_hat.png",
     };
+
+    const url = new URLSearchParams(window.location.search);
+
+    const id = url.get("id");
+    const hash = url.get("hash");
+    const type = url.get("type");
+
+    if (id && hash) {
+      const cleanId = id.replace(/[^0-9]/g, "");
+      const cleanHash = hash.replace(/[^0-9a-f]/g, "");
+      const cleanType = (type || 'png').replace(/[^a-z]/g, "");
+      const avatarUrl = `./proxy/${cleanId}/${cleanHash}.${cleanType}`;
+      this.state = {
+        backgroundImage: avatarUrl,
+        hatImage: "./santa_hat.png",
+      };
+    }
+
     this.onHatChange = this.onHatChange.bind(this);
     this.onNewBackground = this.onNewBackground.bind(this);
   }
